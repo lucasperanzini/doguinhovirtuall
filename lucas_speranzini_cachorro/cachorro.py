@@ -1,7 +1,8 @@
 #coding: utf-8
++from random import randint
 
 class cachorro:
-    def __init__(self, nome, idade, cor, sexo, patas = 4, fome = 0):
+    def __init__(self, nome, idade, cor, sexo, notif, patas = 4, fome = 0):
         self.nome = nome
         self.idade = idade
         self.cor = cor
@@ -10,6 +11,7 @@ class cachorro:
         self.fome = fome
         self. felicidade = 100
         self.sono = 0
+        self.notif = notif
         
     def __repr__(self):
         return "Este eh o cachorro" + self.nome +  ".Ele tem " + str(self.idade) + " anos."
@@ -17,11 +19,29 @@ class cachorro:
     def comer(self):
         if self.fome > 30:
             self.fome -= 20
-            self.fome = constrain(self.fome, 0, 100)
-            notif.novaMsg(self.nome + " está mais feliz ")
+            self.notif.novaMsg(self.nome + " adora essa comida ")
         else:
-            notif.novaMsg(self.nome + " não quer comer...")
+            self.notif.novaMsg(self.nome + " não quer comer...")
             
+    def carinho(self):
+        chance = randint(0,1)
+        if chance == 1:
+            self.felicidade += 10
+            self.notif.novaMsg(self.nome + " nao ta afim de carinho seu babaca ")
+            
+    def mouseover(self):
+        
+        x = width/2
+        y = height * 3/4
+        d = ((mouseX - x)**2 + (mouseY - y)**2)**0.5
+        r = 60
+        if d < r:
+            return True
+        else:
+            
+            return False
+        
+                    
     def update(self):
         global height, width
         x = width/2
@@ -30,13 +50,12 @@ class cachorro:
         h = w * 2\3
         fill(self.cor)
         ellipse(x,y,w,h)
-        rectMode(CENTER)
+        
 
         
         self.fome += 0.01
         self.fome = constrain(self.fome,0,100)
-        rect(x,y-h,100-self.fome,20)
+       
         
         self.felicidade -= 0.01
-        rect(x,y-h-15,self.felicidade,20)
- 
+   
