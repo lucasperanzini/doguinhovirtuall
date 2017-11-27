@@ -48,7 +48,24 @@ class cachorro:
         h = 120
         fill(self.cor)
         ellipse(x,y,w,h)
+        fill(255,0,255)
+        ellipse(x+w/4,y,40,50)
+        ellipse(x+w/4,y,20,25)
+        ellipse(x-w/4,y,40,50)
+        fill(255,0,255)
+        ellipse(x-w/4,y,20,25)
+        fill(0)
+        ellipse(x+60,y,10,30)
+        ellipse(x-60,y,10,30)
         
+        fill(255,0,0)
+        inicio = radians(-135)
+        final = radians(-45)
+        
+        arc(x,y,w,h, inicio, final, CHORD)
+        noFill()
+        arc(x,y,w+15,h+15, radians(-180),radians(0))
+
         self.fome += 0.01
         self.fome = constrain(self.fome,0,100)
        

@@ -11,7 +11,7 @@ interface = ui(dog)
 def setup():
     global doglindo
     size(600,400)
-    doglindo = loadImage("cachorro.png")
+    doglindo = loadImage("cachorrinho.jpg")
 
     
 def draw():
